@@ -1,0 +1,17 @@
+﻿networks:
+  demo_api:
+
+services:
+  database:
+    hostname: demo_api_database
+    container_name: demo_api_database
+    image: postgis/postgis:13-master
+    restart: unless-stopped
+    networks:
+      - demo_api
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: 'admin'
+      POSTGRES_PASSWORD: 'demopassword'
+      POSTGRES_DB: 'demo-api'
